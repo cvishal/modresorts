@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><server>
+<!--These elements have been identified from this application's configuration.-->
+<featureManager>
+<feature>jsp-2.3</feature>
+<feature>servlet-3.1</feature>
+<feature>mdb-3.2</feature>
+<feature>jdbc-4.1</feature>
+<feature>wasJmsServer-1.0</feature>
+<feature>wasJmsClient-2.0</feature>
+</featureManager>
+<httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+<variable name="WAS_INSTALL_ROOT" value="!{WAS_INSTALL_ROOT}"/>
+<variable name="DERBY_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/derby/lib"/>
+<!--These elements are from the profile level configuration. Not all of them may be necessary for your applicaiton.-->
+<!--<messagingEngine>
+        <queue id="TradeBrokerQueue"/>
+        <topicSpace id="TradeStreamerTopic"/>
+    </messagingEngine>--><!--<jmsQueue id="TradeBrokerQueue" jndiName="jms/TradeBrokerQueue">
+        <properties.wasJms deliveryMode="NonPersistent" queueName="TradeBrokerJSD"/>
+    </jmsQueue>--><!--<jmsTopic id="TradeStreamerTopic" jndiName="jms/TradeStreamerTopic">
+        <properties.wasJms deliveryMode="NonPersistent" topicName="TradeStreamerTopic" topicSpace="Trade.Topic.Space"/>
+    </jmsTopic>--><!--<jmsActivationSpec id="TradeBrokerMDBSpec">
+        <properties.wasJms destinationType="javax.jms.Queue"/>
+    </jmsActivationSpec>--><!--<jmsActivationSpec id="TradeStreamerMDBSpec">
+        <properties.wasJms destinationType="javax.jms.Topic"/>
+    </jmsActivationSpec>--><!--<jmsQueueConnectionFactory id="TradeBrokerQCF" jndiName="jms/TradeBrokerQCF">
+        <properties.wasJms/>
+    </jmsQueueConnectionFactory>--><!--<jmsTopicConnectionFactory id="TradeStreamerTCF" jndiName="jms/TradeStreamerTCF">
+        <properties.wasJms/>
+    </jmsTopicConnectionFactory>--><!--<dataSource containerAuthDataRef="TradeDataSourceAuthData" id="TradeDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_Only" jndiName="jdbc/TradeDataSource">
+        <properties.db2.jcc beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="tradedb" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="TradeDataSource" nonTransactionalDataSource="false" portNumber="50000" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="9.30.122.155" statementCacheSize="60" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="50" minPoolSize="10" reapTime="180"/>
+    </dataSource>--><!--<dataSource containerAuthDataRef="TradeDataSourceAuthData" id="NoTxTradeDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_Only" jndiName="jdbc/NoTxTradeDataSource">
+        <properties.db2.jcc beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="tradedb" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="NoTxTradeDataSource" nonTransactionalDataSource="true" portNumber="50000" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="9.30.122.155" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="50" minPoolSize="10" reapTime="180"/>
+    </dataSource>--><!--<dataSource containerAuthDataRef="TradeDataSourceAuthData" id="MEDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_Only" jndiName="jdbc/MEDataSource">
+        <properties.db2.jcc beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="tradedb" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="MEDataSource" nonTransactionalDataSource="false" portNumber="50000" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="9.30.122.155" statementCacheSize="60" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="50" minPoolSize="10" reapTime="180"/>
+    </dataSource>--><!--<dataSource id="OTiSDataSource" jdbcDriverRef="OTiSDataSource" jndiName="OTiSDataSource">
+        <properties.derby.embedded databaseName="/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/OTiS" description="Data source template" name="OTiSDataSource"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="1" reapTime="180"/>
+    </dataSource>--><!--<jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_Only" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
+        <library>
+            <file name="/db2drivers"/>
+        </library>
+    </jdbcDriver>--><!--<jdbcDriver id="OTiSDataSource" javax.sql.DataSource="org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource">
+        <library>
+            <file name="${WAS_INSTALL_ROOT}/derby/lib/derby.jar"/>
+        </library>
+    </jdbcDriver>--><!--<authData id="TradeDataSourceAuthData" password="???" user="db2inst1"/>--><!--<authData id="TradeAdminAuthData" password="???" user="AdminUserID"/>--></server>
